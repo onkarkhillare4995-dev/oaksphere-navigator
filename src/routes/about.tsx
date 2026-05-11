@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/site/PageShell";
 import founder from "@/assets/founder-onkar.jpg";
+import cofounder from "@/assets/cofounder-akash.png";
 import { Card } from "@/components/ui/card";
 
 export const Route = createFileRoute("/about")({
@@ -25,11 +26,22 @@ function About() {
       />
       <section className="py-16 md:py-24">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-3 gap-10 items-start">
-          <div className="lg:col-span-1">
-            <img src={founder} alt="Onkar Khillare, Founder & CEO" className="rounded-2xl shadow-elegant w-full"/>
-            <div className="mt-4">
-              <div className="font-display font-bold text-xl">Onkar Khillare</div>
-              <div className="text-sm text-muted-foreground">Founder & CEO</div>
+          <div className="lg:col-span-1 space-y-6">
+            <div>
+              <img src={founder} alt="Onkar Khillare, Founder & CEO" className="rounded-2xl shadow-elegant w-full"/>
+              <div className="mt-3">
+                <div className="font-display font-bold text-xl">Onkar Khillare</div>
+                <div className="text-sm text-cta">Founder & CEO</div>
+                <div className="text-xs text-muted-foreground mt-1">+91 74998 15246 · onkar@oaksphere.in</div>
+              </div>
+            </div>
+            <div>
+              <img src={cofounder} alt="Akash Nadar, Co-Founder & MD" className="rounded-2xl shadow-elegant w-full"/>
+              <div className="mt-3">
+                <div className="font-display font-bold text-xl">Akash Nadar</div>
+                <div className="text-sm text-cta">Co-Founder & MD</div>
+                <div className="text-xs text-muted-foreground mt-1">+91 70216 86550 · akash@oaksphere.in</div>
+              </div>
             </div>
           </div>
           <div className="lg:col-span-2 space-y-5 text-lg text-foreground/85 leading-relaxed">
