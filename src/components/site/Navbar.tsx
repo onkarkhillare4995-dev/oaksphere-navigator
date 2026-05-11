@@ -21,12 +21,7 @@ export function Navbar() {
     <header className="sticky top-0 z-50 w-full border-b border-border/60 bg-background/80 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-2 font-display font-bold text-xl">
-          <span className="grid h-9 w-9 place-items-center rounded-lg bg-gradient-hero text-white">
-            <svg viewBox="0 0 24 24" fill="none" className="h-5 w-5">
-              <path d="M12 2L4 7v10l8 5 8-5V7l-8-5z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round"/>
-              <circle cx="12" cy="12" r="3" fill="currentColor"/>
-            </svg>
-          </span>
+          <img src={logoMark} alt="OAKsphere logo" width={36} height={36} className="h-9 w-9 object-contain" />
           <span>OAK<span className="text-cta">sphere</span></span>
         </Link>
         <nav className="hidden lg:flex items-center gap-7 text-sm font-medium">
