@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
+import logoMark from "@/assets/oaksphere-mark.png";
 
 const cols = [
   {
@@ -44,6 +45,7 @@ export function Footer() {
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 font-display font-bold text-2xl">
+              <img src={logoMark} alt="OAKsphere logo" width={40} height={40} loading="lazy" className="h-10 w-10 object-contain bg-white rounded-lg p-1" />
               OAK<span className="text-cta">sphere</span>
             </div>
             <p className="mt-4 text-sm text-primary-foreground/70 max-w-sm">
