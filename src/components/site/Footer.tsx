@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
+import logoMark from "@/assets/oaksphere-mark.png";
 
 const cols = [
   {
