@@ -1,0 +1,531 @@
+import { Link } from "@tanstack/react-router";
+import { motion } from "framer-motion";
+import {
+  ArrowRight, Briefcase, Search, Users, Building2, MapPin, Award, CheckCircle2,
+  Zap, ShieldCheck, Sparkles, Clock, Target, Headphones, Quote, GraduationCap,
+  Stethoscope, Banknote, Cpu, Truck, ShoppingBag, Factory, Plane, UtensilsCrossed,
+  TrendingUp, MessageCircle, Phone, Mail, FileUp, ChevronRight
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import heroBg from "@/assets/hero-bg.jpg";
+import founder from "@/assets/founder-onkar.jpg";
+
+const fadeUp = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+};
+
+export function Hero() {
+  return (
+    <section className="relative overflow-hidden bg-gradient-hero text-white">
+      <img src={heroBg} alt="" className="absolute inset-0 h-full w-full object-cover opacity-40 mix-blend-screen" width={1920} height={1080} />
+      <div className="absolute inset-0 bg-gradient-to-b from-primary-deep/40 via-transparent to-primary-deep/80" />
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-28 md:pt-28 md:pb-36">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <motion.div className="lg:col-span-7" {...fadeUp}>
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur">
+              <Sparkles className="h-3.5 w-3.5 text-cta" />
+              India's 360° Recruitment Ecosystem
+            </div>
+            <h1 className="mt-6 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] text-balance">
+              India's Trusted <span className="text-transparent bg-clip-text bg-gradient-to-r from-cta to-warning">Recruitment Partner</span> for Fast-Growing Companies
+            </h1>
+            <p className="mt-6 text-lg text-white/75 max-w-2xl text-balance">
+              OAKsphere helps businesses hire skilled talent across IT, BPO, BFSI, Healthcare, Logistics, Retail and Manufacturing — faster, smarter, and with end-to-end recruitment support.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="xl" variant="cta">
+                <Link to="/employers">Hire Talent <ArrowRight className="h-5 w-5" /></Link>
+              </Button>
+              <Button asChild size="xl" variant="hero">
+                <Link to="/candidates">Find Jobs</Link>
+              </Button>
+            </div>
+            <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
+              {["Permanent Staffing", "Contract Hiring", "Bulk Recruitment", "Executive Search"].map((t) => (
+                <span key={t} className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-success" />{t}</span>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="lg:col-span-5"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="relative">
+              <div className="glass rounded-2xl p-5 shadow-elegant">
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-medium text-white/60 uppercase tracking-wider">Live Hiring Pipeline</div>
+                  <span className="flex items-center gap-1.5 text-xs text-success"><span className="h-1.5 w-1.5 rounded-full bg-success animate-pulse" /> Active</span>
+                </div>
+                <div className="mt-4 space-y-3">
+                  {[
+                    { role: "Sr. React Developer", loc: "Bengaluru", match: 96, color: "bg-success" },
+                    { role: "Customer Support Lead", loc: "Pune", match: 91, color: "bg-sky" },
+                    { role: "Branch Manager – BFSI", loc: "Mumbai", match: 88, color: "bg-cta" },
+                  ].map((c) => (
+                    <div key={c.role} className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 p-3">
+                      <div className={`grid h-10 w-10 shrink-0 place-items-center rounded-lg ${c.color}/20 text-white`}>
+                        <Users className="h-5 w-5" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="text-sm font-semibold truncate">{c.role}</div>
+                        <div className="text-xs text-white/60 flex items-center gap-1"><MapPin className="h-3 w-3" />{c.loc}</div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-sm font-bold text-success">{c.match}%</div>
+                        <div className="text-[10px] text-white/50">match</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-4 grid grid-cols-3 gap-2 text-center">
+                  {[["Sourced", "284"], ["Shortlisted", "62"], ["Offers", "18"]].map(([l, v]) => (
+                    <div key={l} className="rounded-lg bg-white/5 p-2.5">
+                      <div className="text-lg font-bold">{v}</div>
+                      <div className="text-[10px] uppercase tracking-wider text-white/50">{l}</div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <motion.div
+                className="absolute -bottom-6 -left-6 glass rounded-xl p-3 shadow-elegant hidden sm:block"
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+              >
+                <div className="flex items-center gap-2 text-xs">
+                  <Award className="h-4 w-4 text-cta" />
+                  <span className="font-semibold">21-day average TAT</span>
+                </div>
+              </motion.div>
+              <motion.div
+                className="absolute -top-4 -right-4 glass rounded-xl p-3 shadow-elegant hidden sm:block"
+                animate={{ y: [0, 8, 0] }}
+                transition={{ duration: 5, repeat: Infinity }}
+              >
+                <div className="text-[10px] uppercase tracking-wider text-white/60">Cities</div>
+                <div className="text-xl font-bold">25+</div>
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Stats() {
+  const stats = [
+    { v: "10,000+", l: "Candidates in network" },
+    { v: "500+", l: "Roles closed" },
+    { v: "50+", l: "Industry categories" },
+    { v: "25+", l: "Cities covered" },
+    { v: "95%", l: "Client satisfaction" },
+  ];
+  return (
+    <section className="border-y border-border bg-secondary/40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+          {stats.map((s, i) => (
+            <motion.div key={s.l} className="text-center" initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.05 }}>
+              <div className="font-display text-3xl md:text-4xl font-bold text-primary">{s.v}</div>
+              <div className="mt-1 text-xs md:text-sm text-muted-foreground">{s.l}</div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const employerServices = [
+  { icon: Users, title: "Permanent Hiring", desc: "Full-time talent across functions, screened and ready to join." },
+  { icon: Zap, title: "Bulk Hiring", desc: "100+ roles closed in weeks via volume hiring drives." },
+  { icon: Briefcase, title: "Contract Staffing", desc: "Flexible workforce with compliant payroll management." },
+  { icon: ShieldCheck, title: "Payroll Staffing", desc: "End-to-end statutory compliance and payroll outsourcing." },
+  { icon: Award, title: "Executive Search", desc: "Confidential leadership hiring for CXO and senior roles." },
+  { icon: GraduationCap, title: "Campus Hiring", desc: "Fresh talent pipelines from Tier-1, 2, 3 institutes." },
+];
+
+export function EmployerSolutions() {
+  return (
+    <section className="py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div className="max-w-2xl" {...fadeUp}>
+          <Badge className="bg-primary/10 text-primary hover:bg-primary/10">For Employers</Badge>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Hiring made simple for Indian businesses</h2>
+          <p className="mt-4 text-muted-foreground text-lg">Whether you're hiring 1 specialist or 1,000 frontliners, our recruiters and tech-enabled processes deliver verified talent — fast.</p>
+        </motion.div>
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {employerServices.map((s, i) => (
+            <motion.div key={s.title} {...fadeUp} transition={{ duration: 0.5, delay: i * 0.05 }}>
+              <Card className="group relative h-full overflow-hidden p-6 hover:shadow-elegant hover:-translate-y-1 transition-all border-border/60">
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-hero text-white">
+                  <s.icon className="h-5 w-5" />
+                </div>
+                <h3 className="mt-5 font-display font-semibold text-xl">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                <div className="mt-5 flex items-center text-sm font-medium text-cta opacity-0 group-hover:opacity-100 transition-opacity">
+                  Learn more <ChevronRight className="h-4 w-4" />
+                </div>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-12 text-center">
+          <Button asChild size="lg" variant="cta"><Link to="/employers">Post Your Hiring Requirement <ArrowRight className="h-4 w-4"/></Link></Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function CandidateSolutions() {
+  const items = [
+    { icon: FileUp, t: "Upload Resume", d: "One profile, hundreds of opportunities." },
+    { icon: Search, t: "Search Jobs", d: "Filter by city, industry, salary and experience." },
+    { icon: MessageCircle, t: "WhatsApp Job Updates", d: "Real-time alerts on roles that match you." },
+    { icon: Headphones, t: "Career Support", d: "Free interview prep and CV guidance." },
+  ];
+  return (
+    <section className="py-20 md:py-28 bg-secondary/40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <motion.div className="lg:col-span-5" {...fadeUp}>
+            <Badge className="bg-success/15 text-success hover:bg-success/15">For Candidates</Badge>
+            <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Find the right job, faster.</h2>
+            <p className="mt-4 text-muted-foreground text-lg">Get matched with verified employers across India. From freshers to senior leaders, we help you take the next step in your career.</p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Button asChild size="lg" variant="cta"><Link to="/candidates"><FileUp className="h-4 w-4"/> Upload Resume</Link></Button>
+              <Button asChild size="lg" variant="outline"><Link to="/jobs">Browse Jobs</Link></Button>
+            </div>
+          </motion.div>
+          <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
+            {items.map((it, i) => (
+              <motion.div key={it.t} {...fadeUp} transition={{ delay: i * 0.05 }}>
+                <Card className="p-6 h-full hover:border-cta/40 hover:shadow-elegant transition-all">
+                  <it.icon className="h-7 w-7 text-cta" />
+                  <h3 className="mt-4 font-display font-semibold text-lg">{it.t}</h3>
+                  <p className="mt-1.5 text-sm text-muted-foreground">{it.d}</p>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const industries = [
+  { icon: Cpu, name: "IT & Tech", roles: "Engineers · Data · DevOps" },
+  { icon: Headphones, name: "BPO / KPO", roles: "Voice · Non-voice · Chat" },
+  { icon: Banknote, name: "Banking & BFSI", roles: "Sales · Operations · RMs" },
+  { icon: Stethoscope, name: "Healthcare", roles: "Doctors · Nurses · Allied" },
+  { icon: Truck, name: "Logistics", roles: "Drivers · Warehouse · Ops" },
+  { icon: ShoppingBag, name: "Retail & E-com", roles: "Store · Field · Supply" },
+  { icon: Factory, name: "Manufacturing", roles: "Plant · QA · Engineers" },
+  { icon: Plane, name: "Aviation", roles: "Cabin Crew · Ground Staff" },
+  { icon: UtensilsCrossed, name: "Hospitality", roles: "F&B · Front Office" },
+  { icon: TrendingUp, name: "Sales & Marketing", roles: "BD · Field Sales · Digital" },
+];
+
+export function Industries() {
+  return (
+    <section className="py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div className="max-w-2xl" {...fadeUp}>
+          <Badge className="bg-sky/15 text-primary hover:bg-sky/15">Industries</Badge>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">50+ industries. One recruitment partner.</h2>
+          <p className="mt-4 text-muted-foreground text-lg">Specialized recruiters with deep domain expertise across India's fastest-growing sectors.</p>
+        </motion.div>
+        <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {industries.map((ind, i) => (
+            <motion.div key={ind.name} initial={{ opacity: 0, y: 14 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.03 }}>
+              <Link to="/industries" className="group block h-full">
+                <Card className="h-full p-5 text-center hover:border-cta hover:shadow-elegant hover:-translate-y-1 transition-all">
+                  <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-secondary group-hover:bg-gradient-hero group-hover:text-white transition-colors">
+                    <ind.icon className="h-6 w-6" />
+                  </div>
+                  <div className="mt-4 font-semibold text-sm">{ind.name}</div>
+                  <div className="mt-1 text-[11px] text-muted-foreground">{ind.roles}</div>
+                </Card>
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Process() {
+  const steps = [
+    { n: "01", t: "Share Hiring Requirement", d: "Tell us roles, locations, volumes and timelines." },
+    { n: "02", t: "Talent Sourcing", d: "We tap into our 10,000+ candidate network instantly." },
+    { n: "03", t: "Screening & Shortlisting", d: "Verified, skill-tested, culture-matched profiles." },
+    { n: "04", t: "Interview Coordination", d: "We schedule, follow up and close the loop." },
+    { n: "05", t: "Offer & Joining Support", d: "Post-offer engagement to ensure smooth onboarding." },
+  ];
+  return (
+    <section className="py-20 md:py-28 bg-primary text-primary-foreground relative overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,oklch(0.4_0.15_250/_0.4),transparent_60%)]"/>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div className="max-w-2xl" {...fadeUp}>
+          <Badge className="bg-cta/20 text-cta border-0 hover:bg-cta/20">Our Process</Badge>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">From requirement to joining in 5 steps.</h2>
+        </motion.div>
+        <div className="mt-14 grid md:grid-cols-5 gap-6 relative">
+          <div className="hidden md:block absolute top-8 left-[10%] right-[10%] h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+          {steps.map((s, i) => (
+            <motion.div key={s.n} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }} className="relative">
+              <div className="grid h-16 w-16 place-items-center rounded-2xl bg-gradient-cta font-display text-xl font-bold text-cta-foreground shadow-cta">
+                {s.n}
+              </div>
+              <h3 className="mt-5 font-display font-semibold text-lg">{s.t}</h3>
+              <p className="mt-2 text-sm text-primary-foreground/70">{s.d}</p>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function WhyChoose() {
+  const items = [
+    { icon: Clock, t: "21-day average TAT", d: "Pre-screened pipelines move fast." },
+    { icon: ShieldCheck, t: "100% verified candidates", d: "Background, ID and skill verification." },
+    { icon: Target, t: "Industry-specialized recruiters", d: "Domain experts across 50+ sectors." },
+    { icon: MessageCircle, t: "WhatsApp-first engagement", d: "Real-time updates for clients & candidates." },
+    { icon: MapPin, t: "Pan-India hiring network", d: "25+ cities, metro to Tier-3 coverage." },
+    { icon: Award, t: "Transparent reporting", d: "Live dashboards & weekly hiring reviews." },
+  ];
+  return (
+    <section className="py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div className="text-center max-w-2xl mx-auto" {...fadeUp}>
+          <Badge className="bg-cta/15 text-cta hover:bg-cta/15">Why OAKsphere</Badge>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Built on trust. Powered by speed.</h2>
+        </motion.div>
+        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {items.map((it, i) => (
+            <motion.div key={it.t} {...fadeUp} transition={{ delay: i * 0.05 }} className="flex gap-4 p-6 rounded-2xl border border-border/60 hover:border-cta/40 hover:shadow-elegant transition-all bg-card">
+              <div className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-success/10 text-success">
+                <it.icon className="h-5 w-5"/>
+              </div>
+              <div>
+                <h3 className="font-display font-semibold">{it.t}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{it.d}</p>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const featuredJobs = [
+  { title: "Senior React Developer", company: "Leading Fintech", loc: "Bengaluru", exp: "4–7 yrs", sal: "₹18–28 LPA", type: "Full-time", urgent: true },
+  { title: "Customer Support Executive", company: "Global BPO", loc: "Pune", exp: "0–3 yrs", sal: "₹2.4–4.5 LPA", type: "Full-time", urgent: true },
+  { title: "Branch Manager", company: "Private Bank", loc: "Mumbai", exp: "6–10 yrs", sal: "₹12–18 LPA", type: "Full-time", urgent: false },
+  { title: "Warehouse Supervisor", company: "E-commerce", loc: "Hyderabad", exp: "2–5 yrs", sal: "₹3–5 LPA", type: "Full-time", urgent: true },
+  { title: "Staff Nurse", company: "Multi-Speciality Hospital", loc: "Delhi NCR", exp: "1–4 yrs", sal: "₹2.8–4.2 LPA", type: "Full-time", urgent: false },
+  { title: "Field Sales Manager", company: "FMCG Brand", loc: "Chennai", exp: "3–6 yrs", sal: "₹5–8 LPA", type: "Full-time", urgent: false },
+];
+
+export function FeaturedJobs() {
+  return (
+    <section className="py-20 md:py-28 bg-secondary/40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-end justify-between gap-4 flex-wrap">
+          <motion.div {...fadeUp} className="max-w-xl">
+            <Badge className="bg-primary/10 text-primary hover:bg-primary/10">Featured Jobs</Badge>
+            <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Roles open right now.</h2>
+          </motion.div>
+          <Button asChild variant="outline"><Link to="/jobs">View all jobs <ArrowRight className="h-4 w-4"/></Link></Button>
+        </div>
+        <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {featuredJobs.map((j, i) => (
+            <motion.div key={j.title} {...fadeUp} transition={{ delay: i * 0.04 }}>
+              <Card className="p-6 h-full hover:shadow-elegant hover:-translate-y-1 transition-all border-border/60 group">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <h3 className="font-display font-semibold text-lg leading-tight">{j.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">{j.company}</p>
+                  </div>
+                  {j.urgent && <Badge className="bg-cta text-cta-foreground hover:bg-cta shrink-0">Urgent</Badge>}
+                </div>
+                <div className="mt-5 grid grid-cols-2 gap-3 text-sm">
+                  <div className="flex items-center gap-1.5 text-muted-foreground"><MapPin className="h-3.5 w-3.5"/>{j.loc}</div>
+                  <div className="flex items-center gap-1.5 text-muted-foreground"><Briefcase className="h-3.5 w-3.5"/>{j.exp}</div>
+                  <div className="flex items-center gap-1.5 text-muted-foreground"><Banknote className="h-3.5 w-3.5"/>{j.sal}</div>
+                  <div className="flex items-center gap-1.5 text-muted-foreground"><Clock className="h-3.5 w-3.5"/>{j.type}</div>
+                </div>
+                <div className="mt-6 flex items-center gap-2">
+                  <Button asChild className="flex-1" variant="cta"><Link to="/candidates">Apply Now</Link></Button>
+                  <Button asChild variant="outline" size="icon" className="shrink-0"><a href="https://wa.me/917499815246" aria-label="WhatsApp"><MessageCircle className="h-4 w-4"/></a></Button>
+                </div>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const testimonials = [
+  { q: "OAKsphere closed 120 customer support roles in 21 days for our Pune center. Their bulk hiring engine is unmatched.", n: "VP – Operations", c: "Leading BPO" },
+  { q: "We needed niche fintech engineers fast. OAKsphere delivered shortlists within 48 hours, 3 of 5 hires made.", n: "Head of Talent", c: "Series-B Fintech" },
+  { q: "Transparent process, verified profiles, and proactive WhatsApp updates. Easily our most reliable recruitment partner.", n: "HR Director", c: "Healthcare Group" },
+];
+
+export function Testimonials() {
+  return (
+    <section className="py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div className="max-w-2xl" {...fadeUp}>
+          <Badge className="bg-success/15 text-success hover:bg-success/15">Testimonials</Badge>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Trusted by HR leaders across India.</h2>
+        </motion.div>
+        <div className="mt-12 grid md:grid-cols-3 gap-5">
+          {testimonials.map((t, i) => (
+            <motion.div key={i} {...fadeUp} transition={{ delay: i * 0.08 }}>
+              <Card className="p-7 h-full bg-gradient-to-br from-card to-secondary/40 border-border/60 relative overflow-hidden">
+                <Quote className="absolute top-5 right-5 h-12 w-12 text-cta/15" />
+                <p className="text-foreground/90 leading-relaxed">"{t.q}"</p>
+                <div className="mt-6 pt-5 border-t border-border">
+                  <div className="font-semibold text-sm">{t.n}</div>
+                  <div className="text-xs text-muted-foreground">{t.c}</div>
+                </div>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function CaseStudy() {
+  return (
+    <section className="py-20 md:py-28 bg-secondary/40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div {...fadeUp} className="rounded-3xl bg-gradient-hero text-white p-8 md:p-14 relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,oklch(0.7_0.19_45/_0.3),transparent_50%)]"/>
+          <div className="relative grid lg:grid-cols-2 gap-10 items-center">
+            <div>
+              <Badge className="bg-white/10 text-white border-0 hover:bg-white/10">Case Study</Badge>
+              <h3 className="mt-4 font-display text-3xl md:text-4xl font-bold text-balance">120 customer-support roles closed in 21 days.</h3>
+              <p className="mt-4 text-white/75 text-lg">A growing BPO needed massive ramp-up across 3 cities. OAKsphere built a parallel sourcing engine, ran walk-in drives, and closed every role inside 3 weeks — onboarding included.</p>
+              <Button asChild className="mt-7" variant="cta" size="lg"><Link to="/contact">Get a similar plan <ArrowRight className="h-4 w-4"/></Link></Button>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
+              {[
+                ["120", "Roles closed"], ["21", "Days TAT"],
+                ["3", "Cities"], ["94%", "Joining ratio"]
+              ].map(([v, l]) => (
+                <div key={l} className="rounded-2xl glass p-6 text-center">
+                  <div className="font-display text-4xl font-bold text-cta">{v}</div>
+                  <div className="mt-1 text-sm text-white/70">{l}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+export function WhatsAppCTA() {
+  return (
+    <section className="py-16">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div {...fadeUp} className="rounded-3xl bg-[#0d2030] text-white p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-6 relative overflow-hidden border border-white/5">
+          <div className="absolute -top-10 -right-10 h-48 w-48 rounded-full bg-[#25D366]/20 blur-3xl"/>
+          <div className="relative">
+            <h3 className="font-display text-2xl md:text-3xl font-bold">Need urgent hiring support?</h3>
+            <p className="mt-2 text-white/70">Talk to a recruitment expert on WhatsApp — typical response in under 10 minutes.</p>
+          </div>
+          <div className="relative flex flex-wrap gap-3">
+            <Button asChild size="lg" variant="whatsapp"><a href="https://wa.me/917499815246"><MessageCircle className="h-4 w-4"/> Chat on WhatsApp</a></Button>
+            <Button asChild size="lg" variant="hero"><a href="tel:+917499815246"><Phone className="h-4 w-4"/> Call Us</a></Button>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+export function Founder() {
+  return (
+    <section className="py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
+        <motion.div className="lg:col-span-5" {...fadeUp}>
+          <div className="relative max-w-sm mx-auto lg:mx-0">
+            <div className="absolute -inset-4 bg-gradient-cta rounded-3xl blur-2xl opacity-25"/>
+            <img src={founder} alt="Onkar Khillare, Founder & CEO of OAKsphere" className="relative rounded-3xl shadow-elegant w-full" />
+            <div className="absolute -bottom-5 -right-5 bg-card border border-border rounded-2xl p-4 shadow-elegant">
+              <div className="text-xs text-muted-foreground">Founder & CEO</div>
+              <div className="font-display font-bold text-lg">Onkar Khillare</div>
+            </div>
+          </div>
+        </motion.div>
+        <motion.div className="lg:col-span-7" {...fadeUp} transition={{ delay: 0.1 }}>
+          <Badge className="bg-primary/10 text-primary hover:bg-primary/10">Leadership</Badge>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">A note from our Founder.</h2>
+          <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
+            "We started OAKsphere with a single belief — Indian businesses deserve a recruitment partner that's fast, transparent and built on trust. From IT engineers in Bengaluru to bulk frontline hiring across Tier-3 cities, our team treats every requirement like our own."
+          </p>
+          <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
+            "We're not just filling seats — we're building teams that power India's growth story."
+          </p>
+          <div className="mt-7 flex flex-wrap gap-4 text-sm">
+            <a href="tel:+917499815246" className="flex items-center gap-2 text-foreground hover:text-cta"><Phone className="h-4 w-4 text-cta"/> +91 74998 15246</a>
+            <a href="mailto:onkar@oaksphere.in" className="flex items-center gap-2 text-foreground hover:text-cta"><Mail className="h-4 w-4 text-cta"/> onkar@oaksphere.in</a>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+export function Insights() {
+  const posts = [
+    { tag: "Hiring Trends", t: "India's 2026 hiring outlook: 8 sectors leading the demand", r: "5 min read" },
+    { tag: "Salary Guide", t: "IT salary benchmarks across Bengaluru, Pune & Hyderabad", r: "7 min read" },
+    { tag: "Interview Tips", t: "How candidates should prepare for HR + technical rounds", r: "4 min read" },
+  ];
+  return (
+    <section className="py-20 md:py-28 bg-secondary/40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="flex items-end justify-between gap-4 flex-wrap">
+          <motion.div {...fadeUp}>
+            <Badge className="bg-sky/15 text-primary hover:bg-sky/15">Insights</Badge>
+            <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Hiring intelligence from our experts.</h2>
+          </motion.div>
+        </div>
+        <div className="mt-10 grid md:grid-cols-3 gap-5">
+          {posts.map((p, i) => (
+            <motion.div key={p.t} {...fadeUp} transition={{ delay: i * 0.05 }}>
+              <Card className="p-6 h-full hover:shadow-elegant hover:-translate-y-1 transition-all">
+                <Badge variant="secondary" className="text-xs">{p.tag}</Badge>
+                <h3 className="mt-4 font-display font-semibold text-lg leading-snug">{p.t}</h3>
+                <div className="mt-4 text-xs text-muted-foreground">{p.r}</div>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
