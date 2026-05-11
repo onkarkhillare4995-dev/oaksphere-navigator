@@ -11,6 +11,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import heroBg from "@/assets/hero-bg.jpg";
 import founder from "@/assets/founder-onkar.jpg";
+import cofounder from "@/assets/cofounder-akash.png";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -467,33 +468,99 @@ export function WhatsAppCTA() {
 }
 
 export function Founder() {
+  const leaders = [
+    {
+      img: founder,
+      name: "Onkar Khillare",
+      role: "Founder & CEO",
+      quote: "We started OAKsphere with a single belief — Indian businesses deserve a recruitment partner that's fast, transparent and built on trust. We're not just filling seats — we're building teams that power India's growth story.",
+      phone: "+917499815246",
+      phoneLabel: "+91 74998 15246",
+      email: "onkar@oaksphere.in",
+    },
+    {
+      img: cofounder,
+      name: "Akash Nadar",
+      role: "Co-Founder & MD",
+      quote: "Recruitment is the foundation of every great company. At OAKsphere, we're engineering a hiring ecosystem that combines deep human judgement with intelligent technology — built to scale with India's most ambitious businesses.",
+      phone: "+917021686550",
+      phoneLabel: "+91 70216 86550",
+      email: "akash@oaksphere.in",
+    },
+  ];
   return (
     <section className="py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-10 items-center">
-        <motion.div className="lg:col-span-5" {...fadeUp}>
-          <div className="relative max-w-sm mx-auto lg:mx-0">
-            <div className="absolute -inset-4 bg-gradient-cta rounded-3xl blur-2xl opacity-25"/>
-            <img src={founder} alt="Onkar Khillare, Founder & CEO of OAKsphere" className="relative rounded-3xl shadow-elegant w-full" />
-            <div className="absolute -bottom-5 -right-5 bg-card border border-border rounded-2xl p-4 shadow-elegant">
-              <div className="text-xs text-muted-foreground">Founder & CEO</div>
-              <div className="font-display font-bold text-lg">Onkar Khillare</div>
-            </div>
-          </div>
-        </motion.div>
-        <motion.div className="lg:col-span-7" {...fadeUp} transition={{ delay: 0.1 }}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div className="max-w-2xl" {...fadeUp}>
           <Badge className="bg-primary/10 text-primary hover:bg-primary/10">Leadership</Badge>
-          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">A note from our Founder.</h2>
-          <p className="mt-5 text-lg text-muted-foreground leading-relaxed">
-            "We started OAKsphere with a single belief — Indian businesses deserve a recruitment partner that's fast, transparent and built on trust. From IT engineers in Bengaluru to bulk frontline hiring across Tier-3 cities, our team treats every requirement like our own."
-          </p>
-          <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-            "We're not just filling seats — we're building teams that power India's growth story."
-          </p>
-          <div className="mt-7 flex flex-wrap gap-4 text-sm">
-            <a href="tel:+917499815246" className="flex items-center gap-2 text-foreground hover:text-cta"><Phone className="h-4 w-4 text-cta"/> +91 74998 15246</a>
-            <a href="mailto:onkar@oaksphere.in" className="flex items-center gap-2 text-foreground hover:text-cta"><Mail className="h-4 w-4 text-cta"/> onkar@oaksphere.in</a>
-          </div>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Meet the people behind OAKsphere.</h2>
+          <p className="mt-4 text-muted-foreground text-lg">Operators, recruiters and builders — obsessed with making hiring effortless for Indian businesses.</p>
         </motion.div>
+        <div className="mt-14 grid md:grid-cols-2 gap-8">
+          {leaders.map((l, i) => (
+            <motion.div key={l.name} {...fadeUp} transition={{ delay: i * 0.1 }}>
+              <Card className="p-6 md:p-8 h-full hover:shadow-elegant transition-all border-border/60">
+                <div className="flex items-start gap-5">
+                  <div className="relative shrink-0">
+                    <div className="absolute -inset-2 bg-gradient-cta rounded-2xl blur-xl opacity-25"/>
+                    <img src={l.img} alt={`${l.name}, ${l.role} of OAKsphere`} className="relative h-28 w-28 md:h-32 md:w-32 rounded-2xl object-cover shadow-elegant"/>
+                  </div>
+                  <div>
+                    <div className="font-display font-bold text-2xl">{l.name}</div>
+                    <div className="text-sm text-cta font-medium mt-0.5">{l.role}</div>
+                    <div className="mt-3 flex flex-col gap-1.5 text-sm">
+                      <a href={`tel:${l.phone}`} className="flex items-center gap-2 text-foreground hover:text-cta"><Phone className="h-4 w-4 text-cta"/>{l.phoneLabel}</a>
+                      <a href={`mailto:${l.email}`} className="flex items-center gap-2 text-foreground hover:text-cta"><Mail className="h-4 w-4 text-cta"/>{l.email}</a>
+                    </div>
+                  </div>
+                </div>
+                <p className="mt-6 text-muted-foreground leading-relaxed italic relative pl-4 border-l-2 border-cta/40">"{l.quote}"</p>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function Platform() {
+  const features = [
+    { icon: Cpu, t: "AI Resume Matching", d: "Vector-based candidate-to-JD scoring with explainable match reasons." },
+    { icon: MessageCircle, t: "WhatsApp Auto-Engagement", d: "Two-way conversational bot for screening, scheduling and updates." },
+    { icon: Target, t: "Smart JD Generator", d: "Generate role-perfect JDs in seconds with built-in DEI checks." },
+    { icon: ShieldCheck, t: "1-Click BGV", d: "Automated background, ID, education and employment verification." },
+    { icon: TrendingUp, t: "Hiring Analytics", d: "Funnel, source-mix, TAT and offer-drop dashboards in real time." },
+    { icon: Zap, t: "ATS + CRM in one", d: "Pipeline, client portal and recruiter workflows — unified." },
+  ];
+  return (
+    <section className="py-20 md:py-28 bg-gradient-to-b from-background to-secondary/40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div className="max-w-3xl" {...fadeUp}>
+          <Badge className="bg-cta/15 text-cta hover:bg-cta/15">OAKsphere Platform · Coming 2026</Badge>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">An AI-native hiring OS for India.</h2>
+          <p className="mt-4 text-muted-foreground text-lg">We're building the next generation of recruitment infrastructure — combining our recruiter expertise with AI, WhatsApp and automation. Get early access.</p>
+        </motion.div>
+        <div className="mt-12 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {features.map((f, i) => (
+            <motion.div key={f.t} {...fadeUp} transition={{ delay: i * 0.05 }}>
+              <Card className="p-6 h-full hover:border-cta/40 hover:shadow-elegant hover:-translate-y-1 transition-all">
+                <div className="flex items-center gap-3">
+                  <div className="grid h-10 w-10 place-items-center rounded-lg bg-gradient-cta text-cta-foreground">
+                    <f.icon className="h-5 w-5"/>
+                  </div>
+                  <h3 className="font-display font-semibold text-lg">{f.t}</h3>
+                </div>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{f.d}</p>
+                <Badge variant="secondary" className="mt-4 text-[10px]">Beta</Badge>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-12 flex flex-wrap gap-3">
+          <Button asChild size="lg" variant="cta"><Link to="/contact">Request Early Access <ArrowRight className="h-4 w-4"/></Link></Button>
+          <Button asChild size="lg" variant="outline"><Link to="/about">Read our vision</Link></Button>
+        </div>
       </div>
     </section>
   );
