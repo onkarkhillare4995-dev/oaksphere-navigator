@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Menu, X, Phone } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import logoMark from "@/assets/oaksphere-mark.png";
 
 const links = [
   { to: "/", label: "Home" },
