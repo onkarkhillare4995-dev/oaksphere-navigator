@@ -5,7 +5,7 @@ import { WhatsAppFab } from "@/components/site/WhatsAppFab";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import {
   Hero, Stats, EmployerSolutions, CandidateSolutions, Industries, Process,
-  WhyChoose, FeaturedJobs, Testimonials, CaseStudy, WhatsAppCTA, Founder, Insights
+  WhyChoose, FeaturedJobs, Testimonials, CaseStudy, WhatsAppCTA, Founder, Insights, Platform
 } from "@/components/site/sections";
 
 export const Route = createFileRoute("/")({
@@ -35,6 +35,7 @@ function Index() {
         <FeaturedJobs />
         <Testimonials />
         <CaseStudy />
+        <Platform />
         <Founder />
         <WhatsAppCTA />
         <Insights />
