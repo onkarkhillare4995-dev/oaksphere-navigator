@@ -649,16 +649,40 @@ export function TrustBar() {
 
 export function QuickInquiry() {
   const [loading, setLoading] = useState(false);
-  const submit = (e: React.FormEvent<HTMLFormElement>, kind: "employer" | "candidate") => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>, kind: "employer" | "candidate") => {
     e.preventDefault();
+    if (loading) return;
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload: Record<string, unknown> = {
+      kind,
+      name: String(fd.get("name") || ""),
+      email: String(fd.get("email") || ""),
+      phone: String(fd.get("phone") || ""),
+      company: String(fd.get("company") || "") || null,
+      role: String(fd.get("role") || "") || null,
+      city: String(fd.get("city") || "") || null,
+      experience: String(fd.get("experience") || "") || null,
+      message: String(fd.get("message") || "") || null,
+    };
+    const openings = fd.get("openings");
+    if (openings) payload.openings = Number(openings);
+    if (!payload.name || !payload.email) {
+      toast.error("Name and email are required");
+      return;
+    }
     setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-      toast.success(kind === "employer" ? "Hiring requirement received!" : "Resume submitted!", {
-        description: "Our team will reach out within 1 business hour.",
-      });
-      (e.target as HTMLFormElement).reset();
-    }, 700);
+    const { supabase } = await import("@/integrations/supabase/client");
+    const { error } = await supabase.from("inquiries").insert(payload as never);
+    setLoading(false);
+    if (error) {
+      toast.error("Could not submit. Please try again.");
+      return;
+    }
+    toast.success(kind === "employer" ? "Hiring requirement received!" : "Resume submitted!", {
+      description: "Our team will reach out within 1 business hour.",
+    });
+    form.reset();
   };
   return (
     <section className="py-20 md:py-28 bg-secondary/40">
@@ -699,29 +723,29 @@ export function QuickInquiry() {
               <TabsContent value="employer" className="mt-6">
                 <form className="grid gap-4" onSubmit={(e) => submit(e, "employer")}>
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <div><Label>Company</Label><Input required className="mt-1.5"/></div>
-                    <div><Label>Your Name</Label><Input required className="mt-1.5"/></div>
-                    <div><Label>Phone</Label><Input required type="tel" className="mt-1.5"/></div>
-                    <div><Label>Email</Label><Input required type="email" className="mt-1.5"/></div>
-                    <div><Label>Role</Label><Input className="mt-1.5"/></div>
-                    <div><Label>Openings</Label><Input type="number" defaultValue={1} className="mt-1.5"/></div>
+                    <div><Label>Company</Label><Input name="company" required className="mt-1.5"/></div>
+                    <div><Label>Your Name</Label><Input name="name" required className="mt-1.5"/></div>
+                    <div><Label>Phone</Label><Input name="phone" required type="tel" className="mt-1.5"/></div>
+                    <div><Label>Email</Label><Input name="email" required type="email" className="mt-1.5"/></div>
+                    <div><Label>Role</Label><Input name="role" className="mt-1.5"/></div>
+                    <div><Label>Openings</Label><Input name="openings" type="number" defaultValue={1} className="mt-1.5"/></div>
                   </div>
-                  <div><Label>Brief</Label><Textarea rows={3} className="mt-1.5" placeholder="Locations, timeline, must-have skills…"/></div>
+                  <div><Label>Brief</Label><Textarea name="message" rows={3} className="mt-1.5" placeholder="Locations, timeline, must-have skills…"/></div>
                   <Button type="submit" variant="cta" size="lg" disabled={loading}>{loading ? "Sending…" : "Submit Hiring Requirement"}</Button>
                 </form>
               </TabsContent>
               <TabsContent value="candidate" className="mt-6">
                 <form className="grid gap-4" onSubmit={(e) => submit(e, "candidate")}>
                   <div className="grid sm:grid-cols-2 gap-4">
-                    <div><Label>Full Name</Label><Input required className="mt-1.5"/></div>
-                    <div><Label>Phone</Label><Input required type="tel" className="mt-1.5"/></div>
-                    <div><Label>Email</Label><Input required type="email" className="mt-1.5"/></div>
-                    <div><Label>Current City</Label><Input className="mt-1.5"/></div>
-                    <div><Label>Experience</Label><Input className="mt-1.5" placeholder="e.g. 3 years"/></div>
-                    <div><Label>Preferred Role</Label><Input className="mt-1.5"/></div>
+                    <div><Label>Full Name</Label><Input name="name" required className="mt-1.5"/></div>
+                    <div><Label>Phone</Label><Input name="phone" required type="tel" className="mt-1.5"/></div>
+                    <div><Label>Email</Label><Input name="email" required type="email" className="mt-1.5"/></div>
+                    <div><Label>Current City</Label><Input name="city" className="mt-1.5"/></div>
+                    <div><Label>Experience</Label><Input name="experience" className="mt-1.5" placeholder="e.g. 3 years"/></div>
+                    <div><Label>Preferred Role</Label><Input name="role" className="mt-1.5"/></div>
                   </div>
-                  <div><Label>Upload Resume (PDF/DOC)</Label><Input type="file" accept=".pdf,.doc,.docx" className="mt-1.5"/></div>
-                  <Button type="submit" variant="cta" size="lg" disabled={loading}>{loading ? "Uploading…" : "Submit Resume"}</Button>
+                  <div className="text-xs text-muted-foreground">To upload your resume file, please use the <a href="/candidates" className="underline text-cta">Candidates page</a>.</div>
+                  <Button type="submit" variant="cta" size="lg" disabled={loading}>{loading ? "Sending…" : "Submit Details"}</Button>
                 </form>
               </TabsContent>
             </Tabs>
