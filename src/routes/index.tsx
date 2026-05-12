@@ -28,18 +28,22 @@ function Index() {
       <main className="flex-1 pb-16 md:pb-0">
         <Hero />
         <Stats />
+        <TrustBar />
         <EmployerSolutions />
         <CandidateSolutions />
         <Industries />
         <Process />
         <WhyChoose />
         <FeaturedJobs />
+        <QuickInquiry />
         <Testimonials />
         <CaseStudy />
         <Platform />
         <Founder />
+        <FAQ />
         <WhatsAppCTA />
         <Insights />
+        <FinalCTA />
       </main>
       <Footer />
       <WhatsAppFab />
