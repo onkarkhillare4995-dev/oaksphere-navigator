@@ -613,3 +613,186 @@ export function Insights() {
     </section>
   );
 }
+
+export function TrustBar() {
+  const items = [
+    "Leading Fintech", "Global BPO", "Private Bank", "E-commerce Major",
+    "Healthcare Group", "FMCG Brand", "Logistics Leader", "SaaS Unicorn",
+  ];
+  return (
+    <section className="border-b border-border bg-background py-8">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="text-center text-xs uppercase tracking-[0.2em] text-muted-foreground">
+          Trusted by 200+ growing companies across India
+        </div>
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-x-8 gap-y-3">
+          {items.map((b) => (
+            <div key={b} className="text-sm md:text-base font-display font-semibold text-foreground/50 hover:text-foreground transition-colors">
+              {b}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export function QuickInquiry() {
+  const [loading, setLoading] = useState(false);
+  const submit = (e: React.FormEvent<HTMLFormElement>, kind: "employer" | "candidate") => {
+    e.preventDefault();
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      toast.success(kind === "employer" ? "Hiring requirement received!" : "Resume submitted!", {
+        description: "Our team will reach out within 1 business hour.",
+      });
+      (e.target as HTMLFormElement).reset();
+    }, 700);
+  };
+  return (
+    <section className="py-20 md:py-28 bg-secondary/40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-start">
+        <motion.div className="lg:col-span-5" {...fadeUp}>
+          <Badge className="bg-cta/15 text-cta hover:bg-cta/15">Quick Inquiry</Badge>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">
+            Get started in 60 seconds.
+          </h2>
+          <p className="mt-4 text-muted-foreground text-lg">
+            Whether you're hiring or job-hunting, share a few details and our team will reach out within the hour.
+          </p>
+          <ul className="mt-8 space-y-3 text-sm">
+            {[
+              "Free, no-obligation consultation",
+              "1-business-hour response guarantee",
+              "100% confidential — your data is safe",
+              "WhatsApp, call & email support",
+            ].map((b) => (
+              <li key={b} className="flex items-center gap-2.5">
+                <CheckCircle2 className="h-4 w-4 text-success shrink-0" />
+                <span className="text-foreground/80">{b}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button asChild variant="whatsapp"><a href="https://wa.me/917499815246"><MessageCircle className="h-4 w-4"/> WhatsApp</a></Button>
+            <Button asChild variant="outline"><a href="tel:+917499815246"><Phone className="h-4 w-4"/> +91 74998 15246</a></Button>
+          </div>
+        </motion.div>
+        <motion.div className="lg:col-span-7" {...fadeUp}>
+          <Card className="p-6 md:p-8 shadow-elegant border-border/60">
+            <Tabs defaultValue="employer" className="w-full">
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="employer">I'm Hiring</TabsTrigger>
+                <TabsTrigger value="candidate">I'm Job-Seeking</TabsTrigger>
+              </TabsList>
+              <TabsContent value="employer" className="mt-6">
+                <form className="grid gap-4" onSubmit={(e) => submit(e, "employer")}>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div><Label>Company</Label><Input required className="mt-1.5"/></div>
+                    <div><Label>Your Name</Label><Input required className="mt-1.5"/></div>
+                    <div><Label>Phone</Label><Input required type="tel" className="mt-1.5"/></div>
+                    <div><Label>Email</Label><Input required type="email" className="mt-1.5"/></div>
+                    <div><Label>Role</Label><Input className="mt-1.5"/></div>
+                    <div><Label>Openings</Label><Input type="number" defaultValue={1} className="mt-1.5"/></div>
+                  </div>
+                  <div><Label>Brief</Label><Textarea rows={3} className="mt-1.5" placeholder="Locations, timeline, must-have skills…"/></div>
+                  <Button type="submit" variant="cta" size="lg" disabled={loading}>{loading ? "Sending…" : "Submit Hiring Requirement"}</Button>
+                </form>
+              </TabsContent>
+              <TabsContent value="candidate" className="mt-6">
+                <form className="grid gap-4" onSubmit={(e) => submit(e, "candidate")}>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div><Label>Full Name</Label><Input required className="mt-1.5"/></div>
+                    <div><Label>Phone</Label><Input required type="tel" className="mt-1.5"/></div>
+                    <div><Label>Email</Label><Input required type="email" className="mt-1.5"/></div>
+                    <div><Label>Current City</Label><Input className="mt-1.5"/></div>
+                    <div><Label>Experience</Label><Input className="mt-1.5" placeholder="e.g. 3 years"/></div>
+                    <div><Label>Preferred Role</Label><Input className="mt-1.5"/></div>
+                  </div>
+                  <div><Label>Upload Resume (PDF/DOC)</Label><Input type="file" accept=".pdf,.doc,.docx" className="mt-1.5"/></div>
+                  <Button type="submit" variant="cta" size="lg" disabled={loading}>{loading ? "Uploading…" : "Submit Resume"}</Button>
+                </form>
+              </TabsContent>
+            </Tabs>
+          </Card>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+export function FAQ() {
+  const faqs = [
+    { q: "How quickly can OAKsphere share shortlisted candidates?", a: "For most roles, we deliver pre-screened shortlists within 48 hours. Bulk hiring drives can mobilize 100+ candidates in under a week." },
+    { q: "What is your average time-to-hire (TAT)?", a: "Our pan-India average is 21 days from requirement to joining. Niche tech and leadership roles may take 30–45 days." },
+    { q: "Do you charge candidates any fees?", a: "Never. OAKsphere is 100% free for candidates. Our fees are paid by employers on successful joining." },
+    { q: "How do you verify candidates?", a: "Every candidate is screened on identity, education, employment history and skill fit. We also offer optional 1-click background verification (BGV)." },
+    { q: "Do you offer a replacement guarantee?", a: "Yes. For permanent placements, we offer a free replacement if a candidate exits within the agreed guarantee window (typically 60–90 days)." },
+    { q: "Which cities and industries do you cover?", a: "We hire across 25+ cities (metros to Tier-3) for 50+ industries — IT, BPO, BFSI, healthcare, retail, logistics, manufacturing, hospitality and more." },
+    { q: "Can you handle bulk hiring of 100+ roles?", a: "Absolutely. Bulk and volume hiring is one of our strongest verticals. We run dedicated walk-in drives, virtual assessments and parallel sourcing engines." },
+    { q: "How do I get started?", a: "Submit a quick inquiry form, WhatsApp us at +91 74998 15246, or email onkar@oaksphere.in. We respond within 1 business hour." },
+  ];
+  return (
+    <section className="py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12">
+        <motion.div className="lg:col-span-4" {...fadeUp}>
+          <Badge className="bg-primary/10 text-primary hover:bg-primary/10">FAQ</Badge>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Questions, answered.</h2>
+          <p className="mt-4 text-muted-foreground text-lg">Everything employers and candidates ask before working with OAKsphere.</p>
+          <div className="mt-8 rounded-2xl border border-border p-5 bg-secondary/40">
+            <div className="font-display font-semibold">Still have questions?</div>
+            <p className="text-sm text-muted-foreground mt-1">Talk to our team directly.</p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Button asChild size="sm" variant="whatsapp"><a href="https://wa.me/917499815246"><MessageCircle className="h-4 w-4"/> WhatsApp</a></Button>
+              <Button asChild size="sm" variant="outline"><a href="tel:+917499815246"><Phone className="h-4 w-4"/> Call</a></Button>
+            </div>
+          </div>
+        </motion.div>
+        <motion.div className="lg:col-span-8" {...fadeUp}>
+          <Accordion type="single" collapsible className="w-full">
+            {faqs.map((f, i) => (
+              <AccordionItem key={i} value={`item-${i}`} className="border-border/60">
+                <AccordionTrigger className="text-left font-display font-semibold text-base md:text-lg hover:no-underline hover:text-cta">
+                  {f.q}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed text-base">
+                  {f.a}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+export function FinalCTA() {
+  return (
+    <section className="py-16 md:py-20">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div {...fadeUp} className="rounded-3xl bg-gradient-hero text-white p-10 md:p-16 text-center relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,oklch(0.7_0.19_45/_0.35),transparent_60%)]"/>
+          <div className="relative">
+            <Badge className="bg-white/10 text-white border-0 hover:bg-white/10">Let's Build Your Team</Badge>
+            <h2 className="mt-4 font-display text-3xl md:text-5xl font-bold text-balance max-w-3xl mx-auto">
+              Ready to hire faster, smarter, and with total confidence?
+            </h2>
+            <p className="mt-5 text-white/80 text-lg max-w-2xl mx-auto">
+              Join 200+ Indian businesses who trust OAKsphere to power their growth — one great hire at a time.
+            </p>
+            <div className="mt-9 flex flex-wrap gap-3 justify-center">
+              <Button asChild size="xl" variant="cta"><Link to="/employers">Hire Talent <ArrowRight className="h-5 w-5"/></Link></Button>
+              <Button asChild size="xl" variant="hero"><Link to="/candidates">Submit Resume</Link></Button>
+              <Button asChild size="xl" variant="whatsapp"><a href="https://wa.me/917499815246"><MessageCircle className="h-5 w-5"/> WhatsApp Us</a></Button>
+            </div>
+            <div className="mt-6 text-sm text-white/60">
+              Or call <a href="tel:+917499815246" className="underline underline-offset-4 hover:text-cta">+91 74998 15246</a> · Response within 1 business hour
+            </div>
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
