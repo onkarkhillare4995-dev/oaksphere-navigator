@@ -11,6 +11,7 @@ const links = [
   { to: "/jobs", label: "Jobs" },
   { to: "/employers", label: "Employers" },
   { to: "/candidates", label: "Candidates" },
+  { to: "/ai-match", label: "AI Match" },
   { to: "/about", label: "About" },
   { to: "/contact", label: "Contact" },
 ];

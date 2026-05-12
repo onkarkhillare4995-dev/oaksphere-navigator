@@ -15,8 +15,10 @@ import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as EmployersRouteImport } from './routes/employers'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CandidatesRouteImport } from './routes/candidates'
+import { Route as AiMatchRouteImport } from './routes/ai-match'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiMatchResumeRouteImport } from './routes/api/match-resume'
 
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
@@ -48,6 +50,11 @@ const CandidatesRoute = CandidatesRouteImport.update({
   path: '/candidates',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AiMatchRoute = AiMatchRouteImport.update({
+  id: '/ai-match',
+  path: '/ai-match',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -58,80 +65,99 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiMatchResumeRoute = ApiMatchResumeRouteImport.update({
+  id: '/api/match-resume',
+  path: '/api/match-resume',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-match': typeof AiMatchRoute
   '/candidates': typeof CandidatesRoute
   '/contact': typeof ContactRoute
   '/employers': typeof EmployersRoute
   '/industries': typeof IndustriesRoute
   '/jobs': typeof JobsRoute
   '/services': typeof ServicesRoute
+  '/api/match-resume': typeof ApiMatchResumeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-match': typeof AiMatchRoute
   '/candidates': typeof CandidatesRoute
   '/contact': typeof ContactRoute
   '/employers': typeof EmployersRoute
   '/industries': typeof IndustriesRoute
   '/jobs': typeof JobsRoute
   '/services': typeof ServicesRoute
+  '/api/match-resume': typeof ApiMatchResumeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/ai-match': typeof AiMatchRoute
   '/candidates': typeof CandidatesRoute
   '/contact': typeof ContactRoute
   '/employers': typeof EmployersRoute
   '/industries': typeof IndustriesRoute
   '/jobs': typeof JobsRoute
   '/services': typeof ServicesRoute
+  '/api/match-resume': typeof ApiMatchResumeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
+    | '/ai-match'
     | '/candidates'
     | '/contact'
     | '/employers'
     | '/industries'
     | '/jobs'
     | '/services'
+    | '/api/match-resume'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/ai-match'
     | '/candidates'
     | '/contact'
     | '/employers'
     | '/industries'
     | '/jobs'
     | '/services'
+    | '/api/match-resume'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/ai-match'
     | '/candidates'
     | '/contact'
     | '/employers'
     | '/industries'
     | '/jobs'
     | '/services'
+    | '/api/match-resume'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AiMatchRoute: typeof AiMatchRoute
   CandidatesRoute: typeof CandidatesRoute
   ContactRoute: typeof ContactRoute
   EmployersRoute: typeof EmployersRoute
   IndustriesRoute: typeof IndustriesRoute
   JobsRoute: typeof JobsRoute
   ServicesRoute: typeof ServicesRoute
+  ApiMatchResumeRoute: typeof ApiMatchResumeRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -178,6 +204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CandidatesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ai-match': {
+      id: '/ai-match'
+      path: '/ai-match'
+      fullPath: '/ai-match'
+      preLoaderRoute: typeof AiMatchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -192,18 +225,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/match-resume': {
+      id: '/api/match-resume'
+      path: '/api/match-resume'
+      fullPath: '/api/match-resume'
+      preLoaderRoute: typeof ApiMatchResumeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AiMatchRoute: AiMatchRoute,
   CandidatesRoute: CandidatesRoute,
   ContactRoute: ContactRoute,
   EmployersRoute: EmployersRoute,
   IndustriesRoute: IndustriesRoute,
   JobsRoute: JobsRoute,
   ServicesRoute: ServicesRoute,
+  ApiMatchResumeRoute: ApiMatchResumeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
