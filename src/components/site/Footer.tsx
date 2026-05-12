@@ -1,5 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook, Twitter, Youtube, MessageCircle } from "lucide-react";
+
+const socials = [
+  { icon: Linkedin, href: "https://www.linkedin.com/company/oaksphere", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/oaksphere.in", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/oaksphere.in", label: "Facebook" },
+  { icon: Twitter, href: "https://x.com/oakspherein", label: "X" },
+  { icon: Youtube, href: "https://www.youtube.com/@oaksphere", label: "YouTube" },
+  { icon: MessageCircle, href: "https://wa.me/917499815246", label: "WhatsApp" },
+];
 import logoMark from "@/assets/oaksphere-mark.png";
 
 const cols = [
@@ -57,8 +66,10 @@ export function Footer() {
               <div className="flex items-center gap-2"><MapPin className="h-4 w-4"/> India · Pan-India Hiring Network</div>
             </div>
             <div className="mt-5 flex gap-3">
-              {[Linkedin, Instagram, Facebook].map((Icon, i) => (
-                <a key={i} href="#" className="grid h-9 w-9 place-items-center rounded-full bg-white/10 hover:bg-cta transition-colors"><Icon className="h-4 w-4"/></a>
+              {socials.map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} className="grid h-9 w-9 place-items-center rounded-full bg-white/10 text-white hover:bg-white hover:text-[#EF9F27] transition-colors">
+                  <s.icon className="h-4 w-4" strokeWidth={1.75}/>
+                </a>
               ))}
             </div>
           </div>
@@ -73,11 +84,19 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-primary-foreground/60">
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-primary-foreground/60">
           <p>© {new Date().getFullYear()} OAKsphere. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link to="/contact" className="hover:text-cta">Privacy Policy</Link>
-            <Link to="/contact" className="hover:text-cta">Terms & Conditions</Link>
+          <div className="flex items-center gap-4">
+            <Link to="/contact" className="hover:text-cta">Privacy</Link>
+            <Link to="/contact" className="hover:text-cta">Terms</Link>
+            <span className="hidden md:inline opacity-40">|</span>
+            <div className="flex items-center gap-2">
+              {socials.map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} className="grid h-8 w-8 place-items-center rounded-full text-white/80 hover:text-[#EF9F27] transition-colors">
+                  <s.icon className="h-4 w-4" strokeWidth={1.75}/>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -1,5 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Linkedin, Instagram, Facebook, Twitter, Youtube, MessageCircle } from "lucide-react";
+
+const socials = [
+  { icon: MessageCircle, href: "https://wa.me/917499815246", label: "WhatsApp", primary: true },
+  { icon: Linkedin, href: "https://www.linkedin.com/company/oaksphere", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/oaksphere.in", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/oaksphere.in", label: "Facebook" },
+  { icon: Twitter, href: "https://x.com/oakspherein", label: "X" },
+  { icon: Youtube, href: "https://www.youtube.com/@oaksphere", label: "YouTube" },
+];
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import logoMark from "@/assets/oaksphere-mark.png";
@@ -53,6 +62,16 @@ export function Navbar() {
             <a href="tel:+917499815246" className="flex items-center justify-center gap-2 text-sm text-muted-foreground pt-2">
               <Phone className="h-4 w-4" /> +91 74998 15246
             </a>
+            <a href="https://wa.me/917499815246" target="_blank" rel="noreferrer" className="mt-2 flex items-center justify-center gap-2 rounded-lg bg-[#25D366] text-white py-2.5 text-sm font-semibold">
+              <MessageCircle className="h-4 w-4" /> Chat on WhatsApp
+            </a>
+            <div className="mt-3 pt-3 border-t border-border flex items-center justify-center gap-1">
+              {socials.filter(s => !s.primary).map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} className="grid h-10 w-10 place-items-center rounded-full text-primary hover:text-[#EF9F27] transition-colors">
+                  <s.icon className="h-5 w-5" strokeWidth={1.75}/>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       )}

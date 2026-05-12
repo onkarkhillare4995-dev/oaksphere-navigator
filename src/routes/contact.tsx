@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, Linkedin, Instagram, Youtube, Facebook, Twitter } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -66,6 +66,40 @@ function Contact() {
               <div><Label>Message</Label><Textarea required rows={5} className="mt-1.5"/></div>
               <Button type="submit" variant="cta" size="lg" disabled={loading}>{loading ? "Sending…" : "Send Message"}</Button>
             </form>
+          </Card>
+        </div>
+      </section>
+      <section className="pb-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <Card className="p-8 md:p-12 bg-gradient-hero text-white shadow-elegant">
+            <div className="grid lg:grid-cols-2 gap-8 items-center">
+              <div>
+                <h2 className="font-display text-3xl md:text-4xl font-bold">Connect with OAKsphere</h2>
+                <p className="mt-4 text-white/80 max-w-lg">
+                  Follow us for hiring insights, job openings, candidate success stories, and workforce updates across India.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {[
+                    { icon: Linkedin, href: "https://www.linkedin.com/company/oaksphere", label: "LinkedIn" },
+                    { icon: Instagram, href: "https://www.instagram.com/oaksphere.in", label: "Instagram" },
+                    { icon: Facebook, href: "https://www.facebook.com/oaksphere.in", label: "Facebook" },
+                    { icon: Twitter, href: "https://x.com/oakspherein", label: "X" },
+                    { icon: Youtube, href: "https://www.youtube.com/@oaksphere", label: "YouTube" },
+                    { icon: MessageCircle, href: "https://wa.me/917499815246", label: "WhatsApp" },
+                  ].map((s) => (
+                    <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} className="grid h-11 w-11 place-items-center rounded-full bg-white/10 text-white hover:text-[#EF9F27] hover:bg-white transition-colors">
+                      <s.icon className="h-5 w-5" strokeWidth={1.75}/>
+                    </a>
+                  ))}
+                </div>
+              </div>
+              <div className="grid sm:grid-cols-2 gap-3">
+                <Button asChild variant="secondary" size="lg" className="justify-start"><a href="https://www.linkedin.com/company/oaksphere" target="_blank" rel="noreferrer"><Linkedin className="h-4 w-4 mr-2"/>Follow on LinkedIn</a></Button>
+                <Button asChild variant="secondary" size="lg" className="justify-start"><a href="https://www.instagram.com/oaksphere.in" target="_blank" rel="noreferrer"><Instagram className="h-4 w-4 mr-2"/>Follow on Instagram</a></Button>
+                <Button asChild size="lg" className="justify-start bg-[#25D366] hover:bg-[#25D366]/90 text-white"><a href="https://wa.me/917499815246" target="_blank" rel="noreferrer"><MessageCircle className="h-4 w-4 mr-2"/>Message on WhatsApp</a></Button>
+                <Button asChild variant="cta" size="lg" className="justify-start"><a href="https://www.youtube.com/@oaksphere" target="_blank" rel="noreferrer"><Youtube className="h-4 w-4 mr-2"/>Subscribe on YouTube</a></Button>
+              </div>
+            </div>
           </Card>
         </div>
       </section>
