@@ -7,7 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, Linkedin, Instagram, Youtube, Facebook, Twitter } from "lucide-react";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
