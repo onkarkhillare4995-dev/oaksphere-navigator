@@ -46,11 +46,11 @@ function Jobs() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground"/>
               <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="Search by role, city, company or industry…" className="pl-9 h-12"/>
             </div>
-            <Button variant="cta" size="lg">Search Jobs</Button>
+            <Button variant="cta" size="lg" onClick={() => document.getElementById("jobs-results")?.scrollIntoView({ behavior: "smooth" })}>Search Jobs</Button>
           </Card>
         </div>
       </section>
-      <section className="pb-20">
+      <section id="jobs-results" className="pb-20 scroll-mt-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filtered.map((j) => (
             <Card key={j.title} className="p-6 hover:shadow-elegant hover:-translate-y-1 transition-all">
