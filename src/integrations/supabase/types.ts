@@ -167,6 +167,51 @@ export type Database = {
         }
         Relationships: []
       }
+      jobs: {
+        Row: {
+          apply_url: string
+          company: string | null
+          created_at: string
+          description: string | null
+          external_job_id: string | null
+          id: string
+          job_type: string | null
+          location: string | null
+          posted_at: string | null
+          salary: string | null
+          source: string | null
+          title: string
+        }
+        Insert: {
+          apply_url: string
+          company?: string | null
+          created_at?: string
+          description?: string | null
+          external_job_id?: string | null
+          id?: string
+          job_type?: string | null
+          location?: string | null
+          posted_at?: string | null
+          salary?: string | null
+          source?: string | null
+          title: string
+        }
+        Update: {
+          apply_url?: string
+          company?: string | null
+          created_at?: string
+          description?: string | null
+          external_job_id?: string | null
+          id?: string
+          job_type?: string | null
+          location?: string | null
+          posted_at?: string | null
+          salary?: string | null
+          source?: string | null
+          title?: string
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
