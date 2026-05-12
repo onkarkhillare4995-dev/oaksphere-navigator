@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge";
 import heroBg from "@/assets/hero-bg.jpg";
 import founder from "@/assets/founder-onkar.jpg";
 import cofounder from "@/assets/cofounder-akash.png";
+import cofounderAkshay from "@/assets/cofounder-akshay.jpg";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
