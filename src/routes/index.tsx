@@ -4,8 +4,9 @@ import { Footer } from "@/components/site/Footer";
 import { WhatsAppFab } from "@/components/site/WhatsAppFab";
 import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import {
-  Hero, Stats, EmployerSolutions, CandidateSolutions, Industries, Process,
-  WhyChoose, FeaturedJobs, Testimonials, CaseStudy, WhatsAppCTA, Founder, Insights, Platform
+  Hero, Stats, TrustBar, EmployerSolutions, CandidateSolutions, Industries, Process,
+  WhyChoose, FeaturedJobs, QuickInquiry, Testimonials, CaseStudy, WhatsAppCTA,
+  Founder, Insights, Platform, FAQ, FinalCTA
 } from "@/components/site/sections";
 
 export const Route = createFileRoute("/")({
@@ -27,18 +28,22 @@ function Index() {
       <main className="flex-1 pb-16 md:pb-0">
         <Hero />
         <Stats />
+        <TrustBar />
         <EmployerSolutions />
         <CandidateSolutions />
         <Industries />
         <Process />
         <WhyChoose />
         <FeaturedJobs />
+        <QuickInquiry />
         <Testimonials />
         <CaseStudy />
         <Platform />
         <Founder />
+        <FAQ />
         <WhatsAppCTA />
         <Insights />
+        <FinalCTA />
       </main>
       <Footer />
       <WhatsAppFab />
