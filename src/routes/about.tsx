@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHero } from "@/components/site/PageShell";
 import founder from "@/assets/founder-onkar.jpg";
 import cofounder from "@/assets/cofounder-akash.png";
+import cofounderAkshay from "@/assets/cofounder-akshay.jpg";
 import { Card } from "@/components/ui/card";
 
 export const Route = createFileRoute("/about")({
