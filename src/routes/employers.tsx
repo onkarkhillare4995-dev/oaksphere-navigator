@@ -8,6 +8,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { CheckCircle2, MessageCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { emailSchema, nameSchema } from "@/lib/submit";
 
 export const Route = createFileRoute("/employers")({
   head: () => ({
@@ -31,6 +33,39 @@ function Employers() {
     "Transparent weekly reporting",
     "Replacement guarantee",
   ];
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (loading) return;
+    const fd = new FormData(e.currentTarget);
+    const payload = {
+      company_name: String(fd.get("company_name") || ""),
+      contact_name: String(fd.get("contact_name") || ""),
+      email: String(fd.get("email") || ""),
+      phone: String(fd.get("phone") || ""),
+      job_title: String(fd.get("job_title") || "") || null,
+      hiring_needs: String(fd.get("hiring_needs") || "") || null,
+      message: String(fd.get("message") || "") || null,
+    };
+    try {
+      nameSchema.parse(payload.company_name);
+      nameSchema.parse(payload.contact_name);
+      emailSchema.parse(payload.email);
+    } catch (err) {
+      toast.error(err instanceof Error ? err.message : "Please check your input");
+      return;
+    }
+    setLoading(true);
+    const { error } = await supabase.from("employer_requests").insert(payload);
+    setLoading(false);
+    if (error) {
+      toast.error("Could not submit. Please try again.");
+      return;
+    }
+    toast.success("Requirement received!", { description: "Our team will reach out within 1 business hour." });
+    (e.target as HTMLFormElement).reset();
+  }
+
   return (
     <PageShell>
       <PageHero
@@ -62,29 +97,16 @@ function Employers() {
           <Card className="p-7 md:p-9 shadow-elegant border-border/60">
             <h3 className="font-display text-2xl font-bold">Submit your hiring requirement</h3>
             <p className="text-sm text-muted-foreground mt-1">We'll get back to you within 1 business hour.</p>
-            <form
-              className="mt-6 grid gap-4"
-              onSubmit={(e) => {
-                e.preventDefault();
-                setLoading(true);
-                setTimeout(() => {
-                  setLoading(false);
-                  toast.success("Requirement received!", { description: "Our team will reach out within 1 business hour." });
-                  (e.target as HTMLFormElement).reset();
-                }, 800);
-              }}
-            >
+            <form className="mt-6 grid gap-4" onSubmit={onSubmit}>
               <div className="grid sm:grid-cols-2 gap-4">
-                <div><Label>Company Name</Label><Input required className="mt-1.5"/></div>
-                <div><Label>Contact Person</Label><Input required className="mt-1.5"/></div>
-                <div><Label>Phone</Label><Input required type="tel" className="mt-1.5"/></div>
-                <div><Label>Email</Label><Input required type="email" className="mt-1.5"/></div>
-                <div><Label>Hiring Location</Label><Input className="mt-1.5" placeholder="Mumbai, Pune, …"/></div>
-                <div><Label>Job Role</Label><Input className="mt-1.5"/></div>
-                <div><Label>Number of Openings</Label><Input type="number" className="mt-1.5" defaultValue={1}/></div>
-                <div><Label>Hiring Type</Label><Input className="mt-1.5" placeholder="Permanent / Contract / Bulk"/></div>
+                <div><Label>Company Name</Label><Input name="company_name" required className="mt-1.5"/></div>
+                <div><Label>Contact Person</Label><Input name="contact_name" required className="mt-1.5"/></div>
+                <div><Label>Phone</Label><Input name="phone" required type="tel" className="mt-1.5"/></div>
+                <div><Label>Email</Label><Input name="email" required type="email" className="mt-1.5"/></div>
+                <div><Label>Job Title</Label><Input name="job_title" className="mt-1.5"/></div>
+                <div><Label>Hiring Needs</Label><Input name="hiring_needs" className="mt-1.5" placeholder="Permanent / Contract / Bulk"/></div>
               </div>
-              <div><Label>Message</Label><Textarea rows={4} className="mt-1.5" placeholder="Tell us about your hiring needs"/></div>
+              <div><Label>Message</Label><Textarea name="message" rows={4} className="mt-1.5" placeholder="Tell us about your hiring needs"/></div>
               <Button type="submit" variant="cta" size="lg" disabled={loading}>{loading ? "Sending…" : "Submit Hiring Requirement"}</Button>
               <p className="text-xs text-muted-foreground text-center">No obligation consultation · Your details are kept confidential.</p>
             </form>
