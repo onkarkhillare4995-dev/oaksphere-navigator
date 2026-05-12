@@ -3,6 +3,7 @@ import { PageShell, PageHero } from "@/components/site/PageShell";
 import founder from "@/assets/founder-onkar.jpg";
 import cofounder from "@/assets/cofounder-akash.png";
 import cofounderAkshay from "@/assets/cofounder-akshay.jpg";
+import directorSimran from "@/assets/director-simran.png";
 import { Card } from "@/components/ui/card";
 
 export const Route = createFileRoute("/about")({
@@ -42,6 +43,8 @@ function About() {
                 <div className="font-display font-bold text-xl">Akash Nadar</div>
                 <div className="text-sm text-cta">Co-Founder & MD</div>
                 <div className="text-xs text-muted-foreground mt-1">+91 70216 86550 · akash@oaksphere.in</div>
+              </div>
+            </div>
             <div>
               <img src={cofounderAkshay} alt="Akshay Khillare, Co-Founder & Director – Talent Acquisition" className="rounded-2xl shadow-elegant w-full"/>
               <div className="mt-3">
@@ -50,7 +53,13 @@ function About() {
                 <div className="text-xs text-muted-foreground mt-1">+91 90823 70765 · akshay@oaksphere.in</div>
               </div>
             </div>
-          </div>
+            <div>
+              <img src={directorSimran} alt="Simran Somkuwar, Director – Human Resources" className="rounded-2xl shadow-elegant w-full"/>
+              <div className="mt-3">
+                <div className="font-display font-bold text-xl">Simran Somkuwar</div>
+                <div className="text-sm text-cta">Director – Human Resources</div>
+                <div className="text-xs text-muted-foreground mt-1">+91 74998 15246 · simrank@oaksphere.in</div>
+              </div>
             </div>
           </div>
           <div className="lg:col-span-2 space-y-5 text-lg text-foreground/85 leading-relaxed">

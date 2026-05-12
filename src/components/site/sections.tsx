@@ -20,6 +20,7 @@ import heroBg from "@/assets/hero-bg.jpg";
 import founder from "@/assets/founder-onkar.jpg";
 import cofounder from "@/assets/cofounder-akash.png";
 import cofounderAkshay from "@/assets/cofounder-akshay.jpg";
+import directorSimran from "@/assets/director-simran.png";
 
 const fadeUp = {
   initial: { opacity: 0, y: 24 },
@@ -504,14 +505,23 @@ export function Founder() {
       phoneLabel: "+91 90823 70765",
       email: "akshay@oaksphere.in",
     },
+    {
+      img: directorSimran,
+      name: "Simran Somkuwar",
+      role: "Director – Human Resources",
+      quote: "People are not resources — they are the reason businesses exist. At OAKsphere, my mission is to build a culture where every candidate feels valued, every employee feels heard, and every client feels partnered with for life.",
+      phone: "+917499815246",
+      phoneLabel: "+91 74998 15246",
+      email: "simrank@oaksphere.in",
+    },
   ];
   return (
     <section className="py-20 md:py-28">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div className="max-w-2xl" {...fadeUp}>
           <Badge className="bg-primary/10 text-primary hover:bg-primary/10">Leadership</Badge>
-          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Meet the people behind OAKsphere.</h2>
-          <p className="mt-4 text-muted-foreground text-lg">Operators, recruiters and builders — obsessed with making hiring effortless for Indian businesses.</p>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Meet Our Leadership Team</h2>
+          <p className="mt-4 text-muted-foreground text-lg">A passionate leadership team driven by vision, growth, innovation, and people-first values — building India's most trusted recruitment ecosystem, one hire at a time.</p>
         </motion.div>
         <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {leaders.map((l, i) => (
