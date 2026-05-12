@@ -488,6 +488,15 @@ export function Founder() {
       phoneLabel: "+91 70216 86550",
       email: "akash@oaksphere.in",
     },
+    {
+      img: cofounderAkshay,
+      name: "Akshay Khillare",
+      role: "Co-Founder & Director – Talent Acquisition",
+      quote: "Great hiring is part craft, part science. My focus is building a talent acquisition engine that finds the right people fast — and treats every candidate with the respect they deserve.",
+      phone: "+919082370765",
+      phoneLabel: "+91 90823 70765",
+      email: "akshay@oaksphere.in",
+    },
   ];
   return (
     <section className="py-20 md:py-28">
@@ -497,7 +506,7 @@ export function Founder() {
           <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Meet the people behind OAKsphere.</h2>
           <p className="mt-4 text-muted-foreground text-lg">Operators, recruiters and builders — obsessed with making hiring effortless for Indian businesses.</p>
         </motion.div>
-        <div className="mt-14 grid md:grid-cols-2 gap-8">
+        <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {leaders.map((l, i) => (
             <motion.div key={l.name} {...fadeUp} transition={{ delay: i * 0.1 }}>
               <Card className="p-6 md:p-8 h-full hover:shadow-elegant transition-all border-border/60">
