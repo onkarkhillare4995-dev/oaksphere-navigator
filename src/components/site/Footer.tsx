@@ -1,5 +1,14 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Instagram, Facebook, Twitter, Youtube, MessageCircle } from "lucide-react";
+
+const socials = [
+  { icon: Linkedin, href: "https://www.linkedin.com/company/oaksphere", label: "LinkedIn" },
+  { icon: Instagram, href: "https://www.instagram.com/oaksphere.in", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/oaksphere.in", label: "Facebook" },
+  { icon: Twitter, href: "https://x.com/oakspherein", label: "X" },
+  { icon: Youtube, href: "https://www.youtube.com/@oaksphere", label: "YouTube" },
+  { icon: MessageCircle, href: "https://wa.me/917499815246", label: "WhatsApp" },
+];
 import logoMark from "@/assets/oaksphere-mark.png";
 
 const cols = [
