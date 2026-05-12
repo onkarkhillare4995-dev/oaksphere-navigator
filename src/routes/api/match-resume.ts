@@ -103,8 +103,10 @@ export const Route = createFileRoute("/api/match-resume")({
           return Response.json(result);
         } catch (err) {
           console.error("match-resume error:", err);
-          const msg = err instanceof Error ? err.message : "Unknown error";
-          return Response.json({ error: msg }, { status: 500 });
+          return Response.json(
+            { error: "Analysis failed. Please try again later." },
+            { status: 500 },
+          );
         }
       },
     },
