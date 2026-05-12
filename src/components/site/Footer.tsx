@@ -84,11 +84,19 @@ export function Footer() {
             </div>
           ))}
         </div>
-        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-primary-foreground/60">
+        <div className="mt-12 pt-6 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-primary-foreground/60">
           <p>© {new Date().getFullYear()} OAKsphere. All rights reserved.</p>
-          <div className="flex gap-6">
-            <Link to="/contact" className="hover:text-cta">Privacy Policy</Link>
-            <Link to="/contact" className="hover:text-cta">Terms & Conditions</Link>
+          <div className="flex items-center gap-4">
+            <Link to="/contact" className="hover:text-cta">Privacy</Link>
+            <Link to="/contact" className="hover:text-cta">Terms</Link>
+            <span className="hidden md:inline opacity-40">|</span>
+            <div className="flex items-center gap-2">
+              {socials.map((s) => (
+                <a key={s.label} href={s.href} target="_blank" rel="noreferrer" aria-label={s.label} className="grid h-8 w-8 place-items-center rounded-full text-white/80 hover:text-[#EF9F27] transition-colors">
+                  <s.icon className="h-4 w-4" strokeWidth={1.75}/>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </div>
