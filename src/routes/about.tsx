@@ -42,7 +42,15 @@ function About() {
                 <div className="font-display font-bold text-xl">Akash Nadar</div>
                 <div className="text-sm text-cta">Co-Founder & MD</div>
                 <div className="text-xs text-muted-foreground mt-1">+91 70216 86550 · akash@oaksphere.in</div>
+            <div>
+              <img src={cofounderAkshay} alt="Akshay Khillare, Co-Founder & Director – Talent Acquisition" className="rounded-2xl shadow-elegant w-full"/>
+              <div className="mt-3">
+                <div className="font-display font-bold text-xl">Akshay Khillare</div>
+                <div className="text-sm text-cta">Co-Founder & Director – Talent Acquisition</div>
+                <div className="text-xs text-muted-foreground mt-1">+91 90823 70765 · akshay@oaksphere.in</div>
               </div>
+            </div>
+          </div>
             </div>
           </div>
           <div className="lg:col-span-2 space-y-5 text-lg text-foreground/85 leading-relaxed">
