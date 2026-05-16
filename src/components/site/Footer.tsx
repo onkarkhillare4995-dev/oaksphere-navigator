@@ -21,6 +21,7 @@ const cols = [
       ["Executive Search", "/services"],
       ["Campus Recruitment", "/services"],
       ["Payroll Staffing", "/services"],
+      ["Pricing", "/pricing"],
     ],
   },
   {
@@ -58,7 +59,7 @@ export function Footer() {
               OAK<span className="text-cta">sphere</span>
             </div>
             <p className="mt-4 text-sm text-primary-foreground/70 max-w-sm">
-              India's trusted recruitment partner. Connecting talent, building teams, and powering growth across IT, BPO, BFSI, Healthcare, Manufacturing and more.
+              India's AI-first recruitment partner. Connecting talent, building teams, and powering growth with success-fee hiring, RPO-lite pods, staffing, and recruiter-led AI workflows.
             </p>
             <div className="mt-6 space-y-2 text-sm text-primary-foreground/80">
               <a href="tel:+917499815246" className="flex items-center gap-2 hover:text-cta"><Phone className="h-4 w-4"/> +91 74998 15246</a>

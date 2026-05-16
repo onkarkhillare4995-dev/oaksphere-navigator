@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as JobsRouteImport } from './routes/jobs'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as EmployersRouteImport } from './routes/employers'
@@ -24,6 +25,11 @@ import { Route as ApiPublicImportJobsRouteImport } from './routes/api/public/imp
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const JobsRoute = JobsRouteImport.update({
@@ -86,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/employers': typeof EmployersRoute
   '/industries': typeof IndustriesRoute
   '/jobs': typeof JobsRoute
+  '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
   '/api/match-resume': typeof ApiMatchResumeRoute
   '/api/public/import-jobs': typeof ApiPublicImportJobsRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByTo {
   '/employers': typeof EmployersRoute
   '/industries': typeof IndustriesRoute
   '/jobs': typeof JobsRoute
+  '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
   '/api/match-resume': typeof ApiMatchResumeRoute
   '/api/public/import-jobs': typeof ApiPublicImportJobsRoute
@@ -113,6 +121,7 @@ export interface FileRoutesById {
   '/employers': typeof EmployersRoute
   '/industries': typeof IndustriesRoute
   '/jobs': typeof JobsRoute
+  '/pricing': typeof PricingRoute
   '/services': typeof ServicesRoute
   '/api/match-resume': typeof ApiMatchResumeRoute
   '/api/public/import-jobs': typeof ApiPublicImportJobsRoute
@@ -128,6 +137,7 @@ export interface FileRouteTypes {
     | '/employers'
     | '/industries'
     | '/jobs'
+    | '/pricing'
     | '/services'
     | '/api/match-resume'
     | '/api/public/import-jobs'
@@ -141,6 +151,7 @@ export interface FileRouteTypes {
     | '/employers'
     | '/industries'
     | '/jobs'
+    | '/pricing'
     | '/services'
     | '/api/match-resume'
     | '/api/public/import-jobs'
@@ -154,6 +165,7 @@ export interface FileRouteTypes {
     | '/employers'
     | '/industries'
     | '/jobs'
+    | '/pricing'
     | '/services'
     | '/api/match-resume'
     | '/api/public/import-jobs'
@@ -168,6 +180,7 @@ export interface RootRouteChildren {
   EmployersRoute: typeof EmployersRoute
   IndustriesRoute: typeof IndustriesRoute
   JobsRoute: typeof JobsRoute
+  PricingRoute: typeof PricingRoute
   ServicesRoute: typeof ServicesRoute
   ApiMatchResumeRoute: typeof ApiMatchResumeRoute
   ApiPublicImportJobsRoute: typeof ApiPublicImportJobsRoute
@@ -180,6 +193,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/jobs': {
@@ -264,6 +284,7 @@ const rootRouteChildren: RootRouteChildren = {
   EmployersRoute: EmployersRoute,
   IndustriesRoute: IndustriesRoute,
   JobsRoute: JobsRoute,
+  PricingRoute: PricingRoute,
   ServicesRoute: ServicesRoute,
   ApiMatchResumeRoute: ApiMatchResumeRoute,
   ApiPublicImportJobsRoute: ApiPublicImportJobsRoute,
@@ -271,3 +292,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

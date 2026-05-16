@@ -39,13 +39,13 @@ export function Hero() {
           <motion.div className="lg:col-span-7" {...fadeUp}>
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-white/80 backdrop-blur">
               <Sparkles className="h-3.5 w-3.5 text-cta" />
-              India's 360° Recruitment Ecosystem
+              AI-first recruitment agency for India
             </div>
             <h1 className="mt-6 font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.05] text-balance">
-              India's Trusted <span className="text-transparent bg-clip-text bg-gradient-to-r from-cta to-warning">Recruitment Partner</span> for Fast-Growing Companies
+              Build teams faster with an <span className="text-transparent bg-clip-text bg-gradient-to-r from-cta to-warning">AI-powered recruitment partner</span>
             </h1>
             <p className="mt-6 text-lg text-white/75 max-w-2xl text-balance">
-              OAKsphere helps businesses hire skilled talent across IT, BPO, BFSI, Healthcare, Logistics, Retail and Manufacturing — faster, smarter, and with end-to-end recruitment support.
+              OAKsphere combines recruiter judgment, AI-assisted matching, structured screening, and WhatsApp-first coordination to help Indian startups, SMEs, GCCs, and growth companies hire verified talent in days—not weeks.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild size="xl" variant="cta">
@@ -56,7 +56,7 @@ export function Hero() {
               </Button>
             </div>
             <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 text-sm text-white/70">
-              {["Permanent Staffing", "Contract Hiring", "Bulk Recruitment", "Executive Search"].map((t) => (
+              {["Success-fee hiring", "AI shortlist reports", "RPO-lite pods", "Contract staffing"].map((t) => (
                 <span key={t} className="flex items-center gap-1.5"><CheckCircle2 className="h-4 w-4 text-success" />{t}</span>
               ))}
             </div>
@@ -76,9 +76,9 @@ export function Hero() {
                 </div>
                 <div className="mt-4 space-y-3">
                   {[
-                    { role: "Sr. React Developer", loc: "Bengaluru", match: 96, color: "bg-success" },
+                    { role: "SaaS Account Executive", loc: "Bengaluru", match: 96, color: "bg-success" },
                     { role: "Customer Support Lead", loc: "Pune", match: 91, color: "bg-sky" },
-                    { role: "Branch Manager – BFSI", loc: "Mumbai", match: 88, color: "bg-cta" },
+                    { role: "Data Analyst – GCC", loc: "Hyderabad", match: 88, color: "bg-cta" },
                   ].map((c) => (
                     <div key={c.role} className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 p-3">
                       <div className={`grid h-10 w-10 shrink-0 place-items-center rounded-lg ${c.color}/20 text-white`}>
@@ -826,6 +826,125 @@ export function FinalCTA() {
             </div>
           </div>
         </motion.div>
+      </div>
+    </section>
+  );
+}
+
+
+const aiFeatures = [
+  { icon: FileUp, title: "Resume + JD parsing", desc: "Convert resumes and job descriptions into structured skills, salary, notice-period, and fit data before a recruiter calls." },
+  { icon: Target, title: "Candidate-job match score", desc: "Rank candidates by skill match, experience, location, compensation fit, notice period, and domain relevance." },
+  { icon: MessageCircle, title: "WhatsApp-first automation", desc: "Trigger screening questions, interview reminders, document checklists, and follow-ups where Indian candidates respond fastest." },
+  { icon: ShieldCheck, title: "Recruiter-validated shortlists", desc: "Every AI suggestion is reviewed by a human recruiter for intent, communication, salary fit, and joining probability." },
+  { icon: Clock, title: "Dropout-risk tracking", desc: "Flag candidates with counteroffer risk, long notice periods, weak motivation, or slow document submission before offers collapse." },
+  { icon: Sparkles, title: "Client-ready reports", desc: "Send employers structured shortlist reports with fit score, strengths, concerns, compensation, notice period, and next actions." },
+];
+
+export function AIRecruitmentOS() {
+  return (
+    <section className="py-20 md:py-28 bg-primary text-primary-foreground overflow-hidden">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-12 gap-12 items-start">
+          <motion.div className="lg:col-span-4" {...fadeUp}>
+            <Badge className="bg-white/10 text-cta hover:bg-white/10">AI Recruitment OS</Badge>
+            <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Built like an agency today. Designed to become a SaaS platform tomorrow.</h2>
+            <p className="mt-4 text-primary-foreground/70 text-lg">Our day-one operating system combines proven recruitment processes with AI workflows that shorten time-to-shortlist, improve candidate quality, and protect employers from offer dropouts.</p>
+            <div className="mt-7 flex flex-wrap gap-3">
+              <Button asChild size="lg" variant="cta"><Link to="/ai-match">Explore AI Match <ArrowRight className="h-4 w-4" /></Link></Button>
+              <Button asChild size="lg" variant="hero"><Link to="/employers">Book Hiring Call</Link></Button>
+            </div>
+          </motion.div>
+          <div className="lg:col-span-8 grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
+            {aiFeatures.map((item, i) => (
+              <motion.div key={item.title} {...fadeUp} transition={{ duration: 0.5, delay: i * 0.04 }}>
+                <Card className="h-full p-6 bg-white/5 border-white/10 text-white hover:bg-white/10 transition-colors">
+                  <div className="grid h-11 w-11 place-items-center rounded-xl bg-gradient-cta text-cta-foreground"><item.icon className="h-5 w-5" /></div>
+                  <h3 className="mt-4 font-display text-lg font-semibold">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/65">{item.desc}</p>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const pricingTiers = [
+  { name: "Success Hiring", price: "8.33%–12%", detail: "of annual CTC", best: "Best for permanent roles", bullets: ["Pay after successful joining", "3–5 screened profiles per role", "30–90 day replacement support"] },
+  { name: "RPO-lite Pod", price: "₹75k+", detail: "monthly retainer", best: "Best for 5+ hires/month", bullets: ["Dedicated recruiter capacity", "Weekly funnel reporting", "Reduced success fee options"] },
+  { name: "Bulk + Staffing", price: "Custom", detail: "per joiner or markup", best: "Best for volume teams", bullets: ["Sales, support, retail, operations", "WhatsApp screening flows", "Joining and retention tracking"] },
+];
+
+export function PricingPreview() {
+  return (
+    <section className="py-20 md:py-28 bg-secondary/40">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <motion.div className="max-w-3xl" {...fadeUp}>
+          <Badge className="bg-cta/15 text-cta hover:bg-cta/15">Pricing</Badge>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">Flexible pricing for startups, SMEs, GCCs, and high-volume hiring teams.</h2>
+          <p className="mt-4 text-muted-foreground text-lg">Start with success-fee recruitment, then add retainers, hiring pods, contract staffing, and future AI platform access as your hiring engine scales.</p>
+        </motion.div>
+        <div className="mt-12 grid lg:grid-cols-3 gap-5">
+          {pricingTiers.map((tier, i) => (
+            <motion.div key={tier.name} {...fadeUp} transition={{ duration: 0.5, delay: i * 0.05 }}>
+              <Card className="h-full p-7 border-border/60 hover:shadow-elegant transition-all">
+                <div className="text-sm font-semibold text-cta">{tier.best}</div>
+                <h3 className="mt-2 font-display text-2xl font-bold">{tier.name}</h3>
+                <div className="mt-5 flex items-end gap-2"><span className="font-display text-4xl font-bold">{tier.price}</span><span className="pb-1 text-sm text-muted-foreground">{tier.detail}</span></div>
+                <ul className="mt-6 space-y-3">
+                  {tier.bullets.map((b) => <li key={b} className="flex gap-2 text-sm"><CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-success" />{b}</li>)}
+                </ul>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+        <div className="mt-10 flex flex-wrap gap-3">
+          <Button asChild size="lg" variant="cta"><Link to="/pricing">View Full Pricing</Link></Button>
+          <Button asChild size="lg" variant="outline"><Link to="/contact">Talk to Founder</Link></Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const operatingSteps = [
+  "Employer intake and fee agreement",
+  "JD calibration and hiring scorecard",
+  "AI sourcing, parsing, and ranking",
+  "Recruiter screening and intent validation",
+  "Client shortlist report and interview coordination",
+  "Offer closure, joining, invoice, and replacement support",
+];
+
+export function OperatingModel() {
+  return (
+    <section className="py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12 items-center">
+        <motion.div className="lg:col-span-5" {...fadeUp}>
+          <Badge className="bg-success/15 text-success hover:bg-success/15">Operating Model</Badge>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold text-balance">A practical recruitment workflow built for speed, quality, and collections.</h2>
+          <p className="mt-4 text-muted-foreground text-lg">We focus on signed mandates, calibrated roles, verified shortlists, fast feedback loops, and post-joining follow-up so hiring converts into revenue—not just activity.</p>
+          <div className="mt-7 grid grid-cols-3 gap-3 text-center">
+            {[["7 days", "target shortlist"], ["30–90", "day guarantee"], ["₹1M", "scale roadmap"]].map(([n, l]) => (
+              <div key={l} className="rounded-2xl border border-border p-4"><div className="font-display text-2xl font-bold text-primary">{n}</div><div className="text-xs text-muted-foreground">{l}</div></div>
+            ))}
+          </div>
+        </motion.div>
+        <div className="lg:col-span-7">
+          <Card className="p-6 md:p-8 shadow-elegant border-border/60">
+            <div className="space-y-4">
+              {operatingSteps.map((step, index) => (
+                <motion.div key={step} className="flex items-center gap-4 rounded-xl bg-secondary/50 p-4" {...fadeUp} transition={{ duration: 0.45, delay: index * 0.04 }}>
+                  <div className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-gradient-hero text-sm font-bold text-white">{index + 1}</div>
+                  <div className="font-medium">{step}</div>
+                </motion.div>
+              ))}
+            </div>
+          </Card>
+        </div>
       </div>
     </section>
   );
