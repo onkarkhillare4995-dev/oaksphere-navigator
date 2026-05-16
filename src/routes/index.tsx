@@ -6,14 +6,14 @@ import { MobileStickyCTA } from "@/components/site/MobileStickyCTA";
 import {
   Hero, Stats, TrustBar, EmployerSolutions, CandidateSolutions, Industries, Process,
   WhyChoose, FeaturedJobs, QuickInquiry, Testimonials, CaseStudy, WhatsAppCTA,
-  Founder, Insights, Platform, FAQ, FinalCTA
+  Founder, Insights, Platform, FAQ, FinalCTA, AIRecruitmentOS, PricingPreview, OperatingModel
 } from "@/components/site/sections";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "OAKsphere — India's Trusted Recruitment Partner | Staffing & Hiring Solutions" },
-      { name: "description", content: "OAKsphere is India's 360° recruitment partner — IT staffing, BPO hiring, BFSI, healthcare, bulk hiring, executive search & contract staffing across 25+ cities." },
+      { title: "OAKsphere — AI-Powered Recruitment Agency & Hiring Platform India" },
+      { name: "description", content: "OAKsphere is an AI-first recruitment partner for Indian startups, SMEs and GCCs — success-fee hiring, RPO-lite pods, staffing, shortlist reports and recruiter-led candidate validation." },
       { property: "og:title", content: "OAKsphere — India's Trusted Recruitment Partner" },
       { property: "og:description", content: "Connecting talent. Building teams. Powering growth. Permanent, contract, bulk and executive hiring across India." },
     ],
@@ -30,10 +30,13 @@ function Index() {
         <Stats />
         <TrustBar />
         <EmployerSolutions />
+        <AIRecruitmentOS />
         <CandidateSolutions />
         <Industries />
         <Process />
+        <OperatingModel />
         <WhyChoose />
+        <PricingPreview />
         <FeaturedJobs />
         <QuickInquiry />
         <Testimonials />
